@@ -1,4 +1,4 @@
-package br.com.quintoandar.errorcenter;
+package br.com.quintoandar.quintolog;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

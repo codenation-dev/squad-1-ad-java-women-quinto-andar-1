@@ -1,13 +1,13 @@
-package br.com.quintoandar.errorcenter;
+package br.com.quintoandar.quintolog;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ErrorCenterApplication {
+public class QuintoLogApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ErrorCenterApplication.class, args);
+		SpringApplication.run(QuintoLogApplication.class, args);
 	}
 
 }
