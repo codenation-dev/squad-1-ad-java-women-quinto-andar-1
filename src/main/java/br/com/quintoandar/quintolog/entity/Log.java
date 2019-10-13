@@ -1,14 +1,23 @@
 package br.com.quintoandar.quintolog.entity;
 
+import br.com.quintoandar.quintolog.entity.enums.Level;
 import br.com.quintoandar.quintolog.entity.enums.Status;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
 
+import lombok.Getter;
+import lombok.Setter;
+
+import java.security.Timestamp;
+
+@Getter
+@Setter
 @Entity
 public class Log {
 
@@ -16,42 +25,38 @@ public class Log {
     @NotNull
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+    
+    @Column(name = "number_events")
+    @NotNull
     private Long numberEvents;
+    
+    @Column(name = "level")
+    @NotNull
+    @Max(11)
+    private Level level;
+    
+    @Column(name = "status")
+    @NotNull
     private Status status;
+    
+    @Column(name = "environment")
+    @NotNull
     private Long environment;
+    
+    @Column(name = "description")
+    @NotNull
     private String description;
+    
+    @Column(name = "details")
+    @NotNull
     private String details;
-    private LocalDateTime timestamp;
+    
+    @Column(name = "created_at")
+    @NotNull
+    private Timestamp createdAt;
+    
+    @Column(name = "user_id")
+    @NotNull
     private Long userId;
-
-
-//    private Long idConta;
-//    private Long id
-//    NOTNULL,
-//    @Size(min = 11, max = 11)
-//    private String level
-//
-//    VARCHAR(100) NOTNULL,
-//
-//    privateevents
-//    int NOTNULL,
-//
-//    privatestatus VARCHAR(100) NOTNULL,
-//
-//    privateenvironment
-//    int NOTNULL,
-//
-//    private description VARCHAR(100) NOTNULL,
-//
-//    private details VARCHAR(100) NOTNULL,
-//
-//    private date timestamp
-//    NOTNULL,
-//    private userId
-//    int NOTNULL,
-//
-//    PRIMARY KEY(id),
-//
-//    FOREIGN KEY(userId) REFERENCES(userId)
 
 }
