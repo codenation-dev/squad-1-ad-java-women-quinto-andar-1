@@ -1,10 +1,10 @@
 package br.com.quintoandar.quintolog.interfaces;
 
 public interface InterfaceServices<T> {
-	
-	public void salvar(T object);
-	public Object listarTodos();
-	public Object listarPorId(Long id);
-	public void deletar(Long id);
+
+    public void save(T object);
+    public Object listAll();
+    public Object listById(Long id);
+    public void delete(Long id);
 
 }

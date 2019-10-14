@@ -1,14 +1,10 @@
 package br.com.quintoandar.quintolog.entity.enums;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.stream.Stream;
 
 @Getter
-@Setter
-@AllArgsConstructor
 public enum Level {
 
     DEBUG(1, "DEBUG"),
@@ -18,10 +14,10 @@ public enum Level {
 
     private int id;
     private String name;
-    
-    Level(int id, String name){
-    	this.id = id;
-    	this.name = name;
+
+    Level(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     public static Level getLevel(int levelId) {

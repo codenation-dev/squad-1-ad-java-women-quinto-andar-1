@@ -2,6 +2,8 @@ package br.com.quintoandar.quintolog.entity;
 
 import br.com.quintoandar.quintolog.entity.enums.Level;
 import br.com.quintoandar.quintolog.entity.enums.Status;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,10 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
-
-import lombok.Getter;
-import lombok.Setter;
-
 import java.security.Timestamp;
 
 @Getter
@@ -25,38 +23,38 @@ public class Log {
     @NotNull
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    
+
+    @NotNull
     @Column(name = "number_events")
-    @NotNull
     private Long numberEvents;
-    
-    @Column(name = "level")
-    @NotNull
+
     @Max(11)
+    @NotNull
+    @Column(name = "level")
     private Level level;
-    
+
+    @NotNull
     @Column(name = "status")
-    @NotNull
     private Status status;
-    
+
+    @NotNull
     @Column(name = "environment")
-    @NotNull
     private Long environment;
-    
+
+    @NotNull
     @Column(name = "description")
-    @NotNull
     private String description;
-    
+
+    @NotNull
     @Column(name = "details")
-    @NotNull
     private String details;
-    
+
+    @NotNull
     @Column(name = "created_at")
-    @NotNull
     private Timestamp createdAt;
-    
-    @Column(name = "user_id")
+
     @NotNull
+    @Column(name = "user_id")
     private Long userId;
 
 }
