@@ -5,27 +5,27 @@ import lombok.Getter;
 import java.util.stream.Stream;
 
 @Getter
-public enum Level {
+public enum Environment {
 
-
-    DEBUG(1, "DEBUG"),
-    ERROR(2, "ERROR"),
-    WARNING(3, "WARNING"),
+    PRODUCTION(1, "PRODUCTION"),
+    HOMOLOGATION(2, "HOMOLOGATION"),
+    DEV(3, "DEV"),
     OTHERS(4, "OTHERS");
 
     private int id;
     private String name;
 
-    Level(int id, String name) {
+    Environment(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public static Level getLevel(int levelId) {
+    public static Environment getEnvironment(int environmentId) {
         return Stream.of(values())
-                .filter(value -> levelId == value.id)
+                .filter(value -> environmentId == value.id)
                 .findAny()
                 .orElse(OTHERS);
     }
-}
 
+
+}
