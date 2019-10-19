@@ -3,6 +3,7 @@ package br.com.quintoandar.quintolog.controller;
 import br.com.quintoandar.quintolog.entity.Log;
 import br.com.quintoandar.quintolog.services.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,9 +33,9 @@ public class LogController {
     }
 
     @GetMapping(value = "/list/log")
-    public Object list() {
+    public Object list(Pageable pageable) {
         try {
-            return logService.listAll();
+            return logService.listAll(pageable);
         } catch (Exception e) {
             System.out.println("" + e);
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

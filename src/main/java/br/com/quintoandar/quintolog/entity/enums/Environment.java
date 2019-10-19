@@ -7,25 +7,14 @@ import java.util.stream.Stream;
 @Getter
 public enum Environment {
 
-    PRODUCTION(1, "PRODUCTION"),
-    HOMOLOGATION(2, "HOMOLOGATION"),
-    DEV(3, "DEV"),
-    OTHERS(4, "OTHERS");
+    PRODUCTION("PRODUCTION"),
+    HOMOLOGATION("HOMOLOGATION"),
+    DEV("DEV"),
+    OTHERS("OTHERS");
 
-    private int id;
     private String name;
 
-    Environment(int id, String name) {
-        this.id = id;
+    Environment(String name) {
         this.name = name;
     }
-
-    public static Environment getEnvironment(int environmentId) {
-        return Stream.of(values())
-                .filter(value -> environmentId == value.id)
-                .findAny()
-                .orElse(OTHERS);
-    }
-
-
 }
