@@ -19,7 +19,7 @@ public class LogController {
     @Autowired
     private LogService logService;
 
-    @PostMapping(value = "/add/log")
+    @PostMapping(value = "/log")
     public ResponseEntity<?> save(@RequestBody Log log) {
         try {
             logService.save(log);
@@ -27,11 +27,10 @@ public class LogController {
         } catch (Exception e) {
             System.out.println("" + e);
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-
         }
     }
 
-    @GetMapping(value = "/list/log")
+    @GetMapping(value = "/log")
     public Object list() {
         try {
             return logService.listAll();
@@ -41,7 +40,7 @@ public class LogController {
         }
     }
 
-    @GetMapping(value = "/list/log/{id}")
+    @GetMapping(value = "/log/{id}")
     public Object listById(Long id) {
         try {
             return logService.listById(id);
@@ -51,7 +50,7 @@ public class LogController {
         }
     }
 
-    @DeleteMapping(value = "/delete/log/{id}")
+    @DeleteMapping(value = "/log/{id}")
     public ResponseEntity<?> delete(Long id) {
         try {
             logService.delete(id);
