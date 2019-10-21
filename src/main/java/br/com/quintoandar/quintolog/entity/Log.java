@@ -3,9 +3,8 @@ package br.com.quintoandar.quintolog.entity;
 import br.com.quintoandar.quintolog.entity.enums.Environment;
 import br.com.quintoandar.quintolog.entity.enums.Level;
 import br.com.quintoandar.quintolog.entity.enums.Status;
-import br.com.quintoandar.quintolog.util.LocalDateDeserializer;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,7 +28,6 @@ public class Log {
     @JsonProperty(value = "number_events")
     private Long numberEvents;
 
-    @Size(max = 11)
     @Enumerated(EnumType.STRING)
     @NotNull
     @Column(name = "level")
@@ -58,7 +56,7 @@ public class Log {
     @NotNull
     @Column(name = "created_at")
     @JsonProperty(value = "created_at")
-    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createdAt;
 
     @NotNull
