@@ -4,9 +4,10 @@ import br.com.quintoandar.quintolog.entity.Log;
 import br.com.quintoandar.quintolog.interfaces.InterfaceServices;
 import br.com.quintoandar.quintolog.repository.LogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -16,8 +17,8 @@ public class LogService implements InterfaceServices<Object> {
     private LogRepository logRepository;
 
     @Override
-    public List<Log> listAll() {
-        return logRepository.findAll();
+    public Page<?> listAll(Pageable pageable) {
+        return logRepository.findAll(pageable);
     }
 
     @Override

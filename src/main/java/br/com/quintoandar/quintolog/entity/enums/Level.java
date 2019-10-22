@@ -2,30 +2,20 @@ package br.com.quintoandar.quintolog.entity.enums;
 
 import lombok.Getter;
 
-import java.util.stream.Stream;
+import javax.validation.constraints.Size;
 
 @Getter
 public enum Level {
+    DEBUG("DEBUG"),
+    ERROR("ERROR"),
+    WARNING("WARNING"),
+    OTHERS("OTHERS");
 
-
-    DEBUG(1, "DEBUG"),
-    ERROR(2, "ERROR"),
-    WARNING(3, "WARNING"),
-    OTHERS(4, "OTHERS");
-
-    private int id;
+    @Size(max = 11)
     private String name;
 
-    Level(int id, String name) {
-        this.id = id;
+    Level(String name) {
         this.name = name;
-    }
-
-    public static Level getLevel(int levelId) {
-        return Stream.of(values())
-                .filter(value -> levelId == value.id)
-                .findAny()
-                .orElse(OTHERS);
     }
 }
 
