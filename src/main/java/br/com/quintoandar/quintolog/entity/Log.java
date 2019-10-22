@@ -22,6 +22,11 @@ public class Log {
     @NotNull
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+    
+    @NotNull
+    @Size(max = 100)
+    @Column(name = "title")
+    private String title;
 
     @NotNull
     @Column(name = "number_events")
@@ -58,6 +63,16 @@ public class Log {
     @JsonProperty(value = "created_at")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createdAt;
+    
+    @NotNull
+    @Size(max = 45)
+    @Column(name = "ip")
+    private String ip;
+    
+    @NotNull
+    @Column(name = "stack_trace")
+    @JsonProperty(value = "stack_trace")
+    private String stackTrace;
 
     @NotNull
     @Column(name = "user_id")
