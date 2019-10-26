@@ -3,6 +3,7 @@ package br.com.quintoandar.quintolog.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import br.com.quintoandar.quintolog.services.TokenService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import br.com.quintoandar.quintolog.controller.dto.TokenDto;
@@ -38,7 +39,8 @@ public class AuthenticationController {
             return ResponseEntity.ok(new TokenDto(token, "Bearer"));
 
         } catch (AuthenticationException e){
-            return ResponseEntity.badRequest().build();
+//            return ResponseEntity.badRequest().build();
+            throw new UsernameNotFoundException("User not found, please check your details.");
         }
     }
 }
