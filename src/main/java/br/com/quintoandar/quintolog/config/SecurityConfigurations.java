@@ -1,6 +1,5 @@
 package br.com.quintoandar.quintolog.config;
 
-import br.com.quintoandar.quintolog.exception.JwtAuthenticationEntryPoint;
 import org.springframework.http.HttpMethod;
 import org.springframework.context.annotation.Bean;
 import br.com.quintoandar.quintolog.services.TokenService;
@@ -37,7 +36,6 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
         return super.authenticationManager();
     }
 
-    //Configuração de autorização (Perfil de acesso, qual url pode acessar etcs.)
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -48,13 +46,11 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
         .and().addFilterBefore(new AuthenticationByTokenFilter(tokenService, userRepository), UsernamePasswordAuthenticationFilter.class);
     }
 
-    //Configurações de recursos estaticos, caso trabalhassemos com views internas (js, imagens, css etcs.)
     @Override
     public void configure(WebSecurity web) throws Exception {
 
     }
 
-    //Metodo para configurar a parte de autenticação (Controle de acesso e login)
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(authenticationService).passwordEncoder(new BCryptPasswordEncoder());
