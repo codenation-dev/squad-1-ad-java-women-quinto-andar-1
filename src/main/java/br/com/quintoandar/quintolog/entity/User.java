@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.ArrayList;
 import javax.persistence.*;
 import java.util.Collection;
+import javax.validation.constraints.Size;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Getter
 @Setter
