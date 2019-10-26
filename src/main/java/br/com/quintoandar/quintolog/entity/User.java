@@ -74,6 +74,7 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
+        //Implementar se usuário está habilitado ou não;
         return true;
     }
 }
