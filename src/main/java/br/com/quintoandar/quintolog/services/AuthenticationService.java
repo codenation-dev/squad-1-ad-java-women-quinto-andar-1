@@ -1,12 +1,12 @@
 package br.com.quintoandar.quintolog.services;
 
-import org.springframework.stereotype.Service;
-import br.com.quintoandar.quintolog.entity.User;
+import br.com.quintoandar.quintolog.entity.LogUser;
 import br.com.quintoandar.quintolog.repository.LogUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
@@ -18,12 +18,12 @@ public class AuthenticationService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> user = repository.findByEmail(username);
+        Optional<LogUser> user = repository.findByEmail(username);
 
-        if (user.isPresent()){
+        if (user.isPresent()) {
             return user.get();
         }
 
-       throw new UsernameNotFoundException("User not found, please check your details.");
+        throw new UsernameNotFoundException("User not found, please check your details.");
     }
 }
