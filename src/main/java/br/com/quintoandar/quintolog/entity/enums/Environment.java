@@ -2,15 +2,12 @@ package br.com.quintoandar.quintolog.entity.enums;
 
 import lombok.Getter;
 
-import java.util.stream.Stream;
-
 @Getter
 public enum Environment {
 
     PRODUCTION("PRODUCTION"),
-    HOMOLOGATION("HOMOLOGATION"),
-    DEV("DEV"),
-    OTHERS("OTHERS");
+    HOMOLOG("HOMOLOG"),
+    DEV("DEV");
 
     private String name;
 
