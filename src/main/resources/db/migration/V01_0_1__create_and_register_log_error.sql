@@ -12,7 +12,7 @@ CREATE TABLE log_error (
   stack_trace VARCHAR(100) NOT NULL,
   user_id BIGINT,
   source_application VARCHAR(100),
-  created_at TIMESTAMP NOT NULL default CURRENT_DATE
+  created_at TIMESTAMP NOT NULL default CURRENT_TIMESTAMP
 );
 
 INSERT INTO log_error (title, number_events, level_log, status, environment, description, details, ip, stack_trace, user_id, source_application) values ('LoggerExample', '1', 'WARNING', 'ACTIVE', 'DEV', 'Can cause ArrayIndexOutOfBoundsException', 'log details', '192.168.15.42', 'br.com.quintolog', '1', 'API Example')

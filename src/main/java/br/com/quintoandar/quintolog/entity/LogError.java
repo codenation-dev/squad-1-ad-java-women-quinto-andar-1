@@ -26,7 +26,7 @@ public class LogError {
 
     @Id
     @NotNull
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
@@ -80,10 +80,9 @@ public class LogError {
     @JsonProperty(value = "source_application")
     private String sourceApplication;
 
-    @NotNull
     @Column(name = "created_at")
     @JsonProperty(value = "created_at")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime createdAt;
+    private LocalDateTime createdAt = LocalDateTime.now();
 
 }
