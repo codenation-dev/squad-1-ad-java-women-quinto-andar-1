@@ -56,7 +56,7 @@ public class LogUser implements UserDetails {
     @NotNull
     @Column(name = "security_answer")
     @JsonProperty(value = "security_answer")
-    private Long securityAnswer;
+    private String securityAnswer;
 
 
     @ManyToMany(fetch = FetchType.EAGER)
