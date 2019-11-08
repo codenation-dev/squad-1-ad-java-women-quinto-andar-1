@@ -1,6 +1,6 @@
 package br.com.quintoandar.quintolog.services;
 
-import br.com.quintoandar.quintolog.entity.Log;
+import br.com.quintoandar.quintolog.entity.LogError;
 import br.com.quintoandar.quintolog.interfaces.InterfaceServices;
 import br.com.quintoandar.quintolog.repository.LogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class LogService implements InterfaceServices<Object> {
     }
 
     @Override
-    public Optional<Log> listById(Long id) {
+    public Optional<LogError> listById(Long id) {
         return logRepository.findById(id);
     }
 
@@ -33,6 +33,6 @@ public class LogService implements InterfaceServices<Object> {
 
     @Override
     public void save(Object object) {
-        logRepository.save((Log) object);
+        logRepository.save((LogError) object);
     }
 }

@@ -2,19 +2,15 @@ package br.com.quintoandar.quintolog.entity.enums;
 
 import lombok.Getter;
 
-import javax.validation.constraints.Size;
-
 @Getter
-public enum Level {
+public enum LevelLog {
     DEBUG("DEBUG"),
     ERROR("ERROR"),
-    WARNING("WARNING"),
-    OTHERS("OTHERS");
+    WARNING("WARNING");
 
-    @Size(max = 11)
     private String name;
 
-    Level(String name) {
+    LevelLog(String name) {
         this.name = name;
     }
 }

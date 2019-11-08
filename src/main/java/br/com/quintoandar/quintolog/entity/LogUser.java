@@ -1,28 +1,38 @@
 package br.com.quintoandar.quintolog.entity;
 
+import br.com.quintoandar.quintolog.entity.enums.SecurityQuestion;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.List;
-import java.util.ArrayList;
-import javax.persistence.*;
-import java.util.Collection;
-import javax.validation.constraints.Size;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @Getter
 @Setter
 @Entity
-public class User implements UserDetails {
+public class LogUser implements UserDetails {
 
     @Id
-    @NotNull
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     @Column(name = "name")
     @Size(min = 3, max = 100)
     private String name;
@@ -30,14 +40,24 @@ public class User implements UserDetails {
     @Email
     @NotNull
     @Column(name = "email")
+    @Size(max = 100)
     private String email;
 
     @NotNull
     @Column(name = "password")
     private String password;
 
-    @Column(name = "avatar")
-    private String avatar;
+    @NotNull
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "security_question")
+    @JsonProperty(value = "security_question")
+    private SecurityQuestion securityQuestion;
+
+    @NotNull
+    @Column(name = "security_answer")
+    @JsonProperty(value = "security_answer")
+    private String securityAnswer;
+
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Profile> profiles = new ArrayList<>();
@@ -76,4 +96,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }

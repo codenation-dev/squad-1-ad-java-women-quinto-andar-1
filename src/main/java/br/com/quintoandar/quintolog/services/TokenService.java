@@ -1,12 +1,12 @@
 package br.com.quintoandar.quintolog.services;
 
-import io.jsonwebtoken.Jwts;
+import br.com.quintoandar.quintolog.entity.LogUser;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.stereotype.Service;
-import br.com.quintoandar.quintolog.entity.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
@@ -21,7 +21,7 @@ public class TokenService {
     
     public String generateToken(Authentication authentication) {
 
-        User logged = (User) authentication.getPrincipal();
+        LogUser logged = (LogUser) authentication.getPrincipal();
         Date today = new Date();
         Date dateExpiration = new Date(today.getTime() + Long.parseLong(expiration));
 

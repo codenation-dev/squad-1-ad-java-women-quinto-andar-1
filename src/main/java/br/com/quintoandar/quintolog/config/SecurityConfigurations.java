@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean;
 import br.com.quintoandar.quintolog.services.TokenService;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
-import br.com.quintoandar.quintolog.repository.UserRepository;
+import br.com.quintoandar.quintolog.repository.LogUserRepository;
 import br.com.quintoandar.quintolog.services.AuthenticationService;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -28,7 +28,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
     private TokenService tokenService;
 
     @Autowired
-    private UserRepository userRepository;
+    private LogUserRepository logUserRepository;
 
     @Override
     @Bean
@@ -44,7 +44,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
         .anyRequest().authenticated()
         .and().csrf().disable()
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-        .and().addFilterBefore(new AuthenticationByTokenFilter(tokenService, userRepository), UsernamePasswordAuthenticationFilter.class);
+        .and().addFilterBefore(new AuthenticationByTokenFilter(tokenService, logUserRepository), UsernamePasswordAuthenticationFilter.class);
     }
 
     @Override
