@@ -44,9 +44,9 @@ public class LogController {
 	}
 
 	@GetMapping
-	public Object list(Pageable pageable) {
+	public Object list() {
 		try {
-			return logService.listAll(pageable);
+			return logService.listAll();
 		} catch (Exception e) {
 			logger.error("Dados inválidos: " + e);
 			return ResponseEntity.badRequest().build();
