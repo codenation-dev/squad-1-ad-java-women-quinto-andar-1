@@ -40,7 +40,13 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
         .antMatchers(HttpMethod.POST, "/oauth/token").permitAll()
-        .antMatchers(HttpMethod.GET, "/v1/logs").permitAll()
+        .antMatchers(HttpMethod.GET, "/v1/users").permitAll()
+        .antMatchers(HttpMethod.GET, "/v1/users/{id}").permitAll()
+        .antMatchers(HttpMethod.PUT, "/v1/users/changePassword/{id}").permitAll()
+        .antMatchers(HttpMethod.PUT, "/v1/users/recoverPassword").permitAll()
+        .antMatchers(HttpMethod.POST, "/v1/users").permitAll()
+        .antMatchers(HttpMethod.DELETE, "/v1/users/{id}").permitAll()
+
         .anyRequest().authenticated()
         .and().csrf().disable()
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
