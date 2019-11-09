@@ -44,13 +44,8 @@ public class LogController {
 	}
 
 	@GetMapping
-	public Object list(Pageable pageable) {
-		try {
-			return logService.listAll(pageable);
-		} catch (Exception e) {
-			logger.error("Dados inválidos: " + e);
-			return ResponseEntity.badRequest().build();
-		}
+	public Object list() {
+		return logService.listAll();
 	}
 
 	@GetMapping(value = "/{id}")

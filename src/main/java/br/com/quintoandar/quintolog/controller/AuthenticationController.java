@@ -39,8 +39,7 @@ public class AuthenticationController {
             return ResponseEntity.ok(new TokenDto(token, "Bearer"));
 
         } catch (AuthenticationException e){
-//            return ResponseEntity.badRequest().build();
-            throw new UsernameNotFoundException("User not found, please check your details.");
+            throw new UsernameNotFoundException("User not found, please check your details." + e);
         }
     }
 }
