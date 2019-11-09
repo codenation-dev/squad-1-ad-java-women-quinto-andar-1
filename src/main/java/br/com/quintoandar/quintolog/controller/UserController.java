@@ -25,6 +25,7 @@ public class UserController {
     @PostMapping
     public ResponseEntity<LogUser> save(@RequestBody LogUser logUser) {
         try {
+        	
             userService.save(logUser);
 
             URI location = ServletUriComponentsBuilder.fromCurrentRequest().path(
