@@ -20,6 +20,13 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 @EnableWebSecurity
 @Configuration
 public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
+	
+	private static final String[] AUTH_WHITELIST = {
+            "/swagger-resources/**",
+            "/swagger-ui.html",
+            "/v2/api-docs",
+            "/webjars/**"
+    };	
 
     @Autowired
     private AuthenticationService authenticationService;
@@ -38,8 +45,13 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+    	
+		http.cors();
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/oauth/token").permitAll().antMatchers(AUTH_WHITELIST)
+				.permitAll();
+    	
         http.authorizeRequests()
-        .antMatchers(HttpMethod.POST, "/oauth/token").permitAll()
+        .antMatchers(HttpMethod.GET, "/v1/users").permitAll()
         .antMatchers(HttpMethod.POST, "/v1/users").permitAll()
         .antMatchers(HttpMethod.PUT, "/v1/recoverPassword").permitAll()
         .anyRequest().authenticated()
