@@ -99,6 +99,14 @@ public class UserController {
         }
     }
 
+    @PutMapping(value = "getData")
+    public ResponseEntity<LogUser> listByEmail(@RequestBody Map<String, String> data) {
+        Optional<LogUser> user = userService.listByEmail(data.get("email"));
+        if (!user.isPresent()) return ResponseEntity.notFound().build();
+
+        return ResponseEntity.ok(user.get());
+    }
+
     @GetMapping(value = "/{id}")
     public ResponseEntity<LogUser> listById(@PathVariable Long id) {
         Optional<LogUser> user = userService.listById(id);
