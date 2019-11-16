@@ -7,6 +7,7 @@ import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -25,6 +26,8 @@ public class UserController {
     @PostMapping
     public ResponseEntity<LogUser> save(@RequestBody LogUser logUser) {
         try {
+            Optional<LogUser> user = userService.listByEmail(logUser.getEmail());
+            if (user.isPresent()) return ResponseEntity.status(500).build();
         	
             userService.save(logUser);
 
@@ -63,10 +66,11 @@ public class UserController {
         try {
             Optional<LogUser> user = userService.listById(id);
             if (!user.isPresent()) return ResponseEntity.notFound().build();
-
             LogUser updateUser = user.get();
-            if (!updateUser.getEmail().equals(data.get("email")) || !updateUser.getPassword().equals(data.get("oldPassword"))){
-                return new ResponseEntity<String>("Credenciais inválidas", HttpStatus.UNAUTHORIZED);
+
+            final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            if(!passwordEncoder.matches(data.get("oldPassword"), updateUser.getPassword())) {
+                return new ResponseEntity<String>("Senha inválida", HttpStatus.UNAUTHORIZED);
             }
 
             updateUser.setPassword(data.get("newPassword"));
