@@ -23,10 +23,7 @@ public class UserService implements InterfaceServices<Object> {
 
     @Override
     public void save(Object object) {
-    	
     	LogUser log =  (LogUser) object;
-    	log.setPassword(new BCryptPasswordEncoder().encode(log.getPassword()));
-    	
         logUserRepository.save(log);
     }
 

@@ -1,20 +1,15 @@
 package br.com.quintoandar.quintolog.controller;
 
 import java.net.URI;
+import java.util.Map;
 import java.util.Optional;
 
 import br.com.quintoandar.quintolog.entity.LogError;
+import br.com.quintoandar.quintolog.entity.enums.Status;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.quintoandar.quintolog.services.LogService;
@@ -52,6 +47,17 @@ public class LogController {
 	public ResponseEntity<LogError> listById(@PathVariable Long id) {
 		Optional<LogError> log = logService.listById(id);
 		return log.isPresent() ? ResponseEntity.ok(log.get()) : ResponseEntity.notFound().build();
+	}
+
+	@PutMapping(value = "/{id}")
+	public ResponseEntity<Void> update(@PathVariable Long id, @RequestBody Map<String, String> data) {
+		Optional<LogError> log = logService.listById(id);
+		if (!log.isPresent()) return ResponseEntity.notFound().build();
+
+		LogError update = log.get();
+		update.setStatus(Status.getStatus(data.get("status")));
+		logService.save(update);
+		return ResponseEntity.ok().build();
 	}
 
 	@DeleteMapping(value = "/{id}")
