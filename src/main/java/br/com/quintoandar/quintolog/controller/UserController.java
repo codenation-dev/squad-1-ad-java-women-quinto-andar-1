@@ -28,8 +28,10 @@ public class UserController {
         try {
             Optional<LogUser> user = userService.listByEmail(logUser.getEmail());
             if (user.isPresent()) return ResponseEntity.status(500).build();
-        	
-            userService.save(logUser);
+
+            LogUser newUser = (LogUser) logUser;
+            newUser.setPassword(new BCryptPasswordEncoder().encode(newUser.getPassword()));
+            userService.save(newUser);
 
             URI location = ServletUriComponentsBuilder.fromCurrentRequest().path(
                     "/{id}").buildAndExpand(logUser.getId()).toUri();
@@ -73,7 +75,7 @@ public class UserController {
                 return new ResponseEntity<String>("Senha inválida", HttpStatus.UNAUTHORIZED);
             }
 
-            updateUser.setPassword(data.get("newPassword"));
+            updateUser.setPassword(new BCryptPasswordEncoder().encode(data.get("newPassword")));
             userService.save(updateUser);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
@@ -94,7 +96,7 @@ public class UserController {
                 return new ResponseEntity<String>("Dados inválidos", HttpStatus.UNAUTHORIZED);
             }
 
-            updateUser.setPassword(data.get("password"));
+            updateUser.setPassword(new BCryptPasswordEncoder().encode(data.get("password")));
             userService.save(updateUser);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
