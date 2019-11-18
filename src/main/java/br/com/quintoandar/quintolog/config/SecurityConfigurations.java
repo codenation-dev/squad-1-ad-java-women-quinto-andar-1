@@ -58,7 +58,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
         .antMatchers(HttpMethod.POST, "/v1/users").permitAll()
         .antMatchers(HttpMethod.GET, "/v1/users").permitAll()
-        .antMatchers(HttpMethod.PUT, "/v1/recoverPassword").permitAll()
+        .antMatchers(HttpMethod.PUT, "/v1/users/recoverPassword").permitAll()
         .anyRequest().authenticated()
         .and().csrf().disable()
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
