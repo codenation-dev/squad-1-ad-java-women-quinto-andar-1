@@ -5,6 +5,8 @@ A aplicação integrada com o front pode ser vista em: https://quinto-log.heroku
 
 As Apis podem ser testadas em: https://quinto-log-back.herokuapp.com/swagger-ui.html.
 
+Documentação completa em: https://github.com/codenation-dev/squad-1-ad-java-women-quinto-andar-1/wiki
+
 ## BUILD DO PROJETO
 Execute a linha de comando maven:
 
