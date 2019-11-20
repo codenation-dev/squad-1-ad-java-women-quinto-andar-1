@@ -1,7 +1,9 @@
 # QUINTO-LOG
 Neste projeto vamos implementar um sistema para centralizar registros de erros de aplicações.
-A aplicação integrada com o front pode ser vista em: https://quinto-log.herokuapp.com
-As Apis podem ser testadas em: https://quinto-log-back.herokuapp.com/swagger-ui.html
+
+A aplicação integrada com o front pode ser vista em: https://quinto-log.herokuapp.com.
+
+As Apis podem ser testadas em: https://quinto-log-back.herokuapp.com/swagger-ui.html.
 
 ## BUILD DO PROJETO
 Execute a linha de comando maven:
