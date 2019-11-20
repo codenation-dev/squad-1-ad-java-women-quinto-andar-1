@@ -7,20 +7,26 @@ As Apis podem ser testadas em: https://quinto-log-back.herokuapp.com/swagger-ui.
 
 ## BUILD DO PROJETO
 Execute a linha de comando maven:
-sh
-mvn clean package
+
+`sh`
+
+`mvn clean package`
 
 
 ## Coverage
 Execute a linha de comando maven:
-sh
-mvn clean verify
+
+`sh`
+
+`mvn clean verify`
 
 
 ## Teste Unitário
 Execute a linha de comando maven:
-sh
-mvn test
+
+`sh`
+
+`mvn test`
 
 
 ## Swagger
@@ -30,5 +36,7 @@ Contexto: Quinto-Log
 
 ## RODAR A APLICAÇÃO
 Execute a linha de comando maven:
-sh
-mvn spring-boot:run
+
+`sh`
+
+`mvn spring-boot:run
