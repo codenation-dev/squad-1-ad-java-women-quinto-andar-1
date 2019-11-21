@@ -14,6 +14,11 @@ Execute a linha de comando maven:
 
 `mvn clean package`
 
+## ARQUITETURA
+
+Um esquema da arquitetura com o front, as requisições realizadas e as APIs existentes pode ser visto abaixo:
+![](https://i.pinimg.com/originals/9d/43/cd/9d43cd75c1585c05013f5d1b9ec56948.png)
+
 
 ## Coverage
 Execute a linha de comando maven:
