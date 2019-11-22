@@ -10,11 +10,11 @@ import br.com.six2six.fixturefactory.loader.TemplateLoader;
 
 public class LogTemplate implements TemplateLoader {
 	
-	public static final String VALIDO = "valido";
+	public static final String VALID = "valido";
 
 	@Override
 	public void load() {
-		Fixture.of(LogError.class).addTemplate(VALIDO, new Rule() {
+		Fixture.of(LogError.class).addTemplate(VALID, new Rule() {
 			{
 				add("id", 10L);
 				add("numberEvents", 10L);
