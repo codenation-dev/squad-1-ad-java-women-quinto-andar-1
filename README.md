@@ -29,6 +29,10 @@ Execute a linha de comando maven:
 
 ### A cobertura atual é 43%
 
+![image](https://user-images.githubusercontent.com/45856882/69452376-47175180-0d40-11ea-88a7-1f4e22b4b22c.png)
+
+![image](https://user-images.githubusercontent.com/45856882/69452587-c86ee400-0d40-11ea-93d1-53ec12be8b90.png)
+
 
 ## Teste Unitário
 Execute a linha de comando maven:
