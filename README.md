@@ -27,6 +27,8 @@ Execute a linha de comando maven:
 
 `mvn clean verify`
 
+### A cobertura atual é 43%
+
 
 ## Teste Unitário
 Execute a linha de comando maven:
