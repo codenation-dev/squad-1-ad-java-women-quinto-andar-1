@@ -53,3 +53,19 @@ Execute a linha de comando maven:
 `sh`
 
 `mvn spring-boot:run`
+
+## SQUAD
+
+   Bruna Iriz Vieira https://github.com/bruna-iriz
+   
+   Camila Araujo     https://github.com/camilaag
+   
+   Clarice Abreu     https://github.com/clariceabreu
+   
+   Gabriela Oliveira https://github.com/olvfg
+   
+   Janaína Dutra     https://github.com/janainadcacaca
+   
+   
+   
+
